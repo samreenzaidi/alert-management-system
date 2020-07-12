@@ -1,0 +1,50 @@
+<div class="home">
+    <div class="home-block-1">
+        <span *ngIf="sendAlertOnEmail && sendAlertOnEmailChecked">
+            <input type="checkbox" checked={{true}}/>
+            <span>System is configfured to send Alerts to {{sendAlertOnEmail}}</span>            
+        </span>
+        <span *ngIf="sendAlertOnEmail && !sendAlertOnEmailChecked">
+            <span>No Email ID is configured to sending Alerts, Press add new alerts to start </span>
+        </span>
+        <span *ngIf="!sendAlertOnEmail && sendAlertOnEmailChecked">
+            <span>No Alerts are configured, Press add new alerts to start</span>
+        </span>
+        <span *ngIf="!sendAlertOnEmail && !sendAlertOnEmailChecked">
+            <span>No Alerts and Email ID are configured, Press add new alerts to start</span>
+        </span>
+        <span>
+            <button (click)="showConfigurePopup()">Configure</button>
+        </span>        
+    </div>
+    <div class="home-block-2">
+        <span>
+            <Label>Select Server: </Label>
+            <span>
+                <select (change)="selectedServerHandler($event)">
+                    <option *ngFor="let server of servers">{{server}}</option>
+                </select>
+            </span>
+        </span>
+        <span>
+            <button (click)="showAddNewPopup()">Add New Alert</button>
+        </span>
+    </div>
+    <div *ngIf="data.length > 0">
+        <table>
+            <tbody>
+                <tr>
+                    <th>Type</th>
+                    <th>Condition</th>
+                    <th>Action</th>
+                </tr>
+                <tr *ngFor="let data of data let i = index" id={{i}}>
+                    <td>{{data.type}}</td>
+                    <td>Alert when {{data.type}} {{data.condition}} {{data.value}}</td>
+                    <td><a (click)="delete($event)">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="data.length == 0" class="no-data">No data to display</div>
+</div>

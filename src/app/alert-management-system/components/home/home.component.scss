@@ -1,0 +1,32 @@
+.home{
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid;
+    .home-block-1,
+    .home-block-2{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }    
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        th,
+        td{
+            border: 1px solid;
+            text-align: center;
+        }
+    }
+    .no-data{
+        text-align: center;
+        padding: 20px;
+        border: 1px solid;
+    }
+    a{
+        cursor: pointer;
+        text-decoration: underline;
+        color: blue;
+    }
+}

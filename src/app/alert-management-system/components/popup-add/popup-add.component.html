@@ -1,0 +1,58 @@
+<div *ngIf="show" class="popup-new-container">
+    <div class="popup-new">
+        <p class="close-icon" (click)="closePopup()">x</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td><label>Host:</label></td>
+                    <td>{{selectedServer}}</td>
+                </tr>
+                <tr>
+                    <td><label>Alert Type:</label></td>
+                    <td>
+                        <select (change)="selectedTypeHandler($event)">
+                            <option *ngFor="let type of types">{{type}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr *ngIf="!visiblity">
+                    <td><label>Condition:</label></td>
+                    <td>
+                        <select (change)="selectedConditionHandler($event)">
+                            <option *ngFor="let condition of conditions">{{condition}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr *ngIf="!visiblity">
+                    <td><label>Value:</label></td>
+                    <td>
+                        <label *ngIf="empty" class="error">Please fill the required value</label>
+                        <input type="text" [(ngModel)]="value"/>
+                    </td>
+                </tr>
+                <tr *ngIf="visiblity">
+                    <td><label>URL:</label></td>
+                    <td>
+                        <input type="text" value=""/>
+                    </td>
+                </tr>
+                <tr *ngIf="visiblity">
+                    <td><label>Response:</label></td>
+                    <td>
+                        <select><option *ngFor="let response of response">{{response}}</option></select>
+                    </td>
+                </tr>
+                <tr *ngIf="visiblity">
+                    <td colspan="2">
+                        <textarea value=""></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right;">
+                        <button (click)="add()">Add</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

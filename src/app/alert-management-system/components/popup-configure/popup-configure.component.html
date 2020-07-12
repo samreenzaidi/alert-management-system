@@ -1,0 +1,19 @@
+<div *ngIf="show" class="popup-configure-container">
+    <div class="popup-configure">
+        <p class="close-icon" (click)="closePopup()">x</p>
+        <table>
+            <tbody>
+                <tr>
+                    <input type="checkbox" [(ngModel)]="checked"/>
+                    <span>Send Alerts on Following Emails</span>
+                </tr>
+                <tr>
+                    <input type="email" [(ngModel)]="emails" required />
+                </tr>
+                <tr>
+                    <button (click)="add()">Save</button>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
